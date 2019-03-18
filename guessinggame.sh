@@ -1,4 +1,4 @@
-##guessing game
+count_tot=$(ls -1 | wc -l)
 function read_count {
 read count
 check_count
@@ -7,9 +7,9 @@ function check_count
 {
 echo "You entered $count"
 
-    while [[ $count -ge 11 ]] || [[ $count -le 9 ]]
+    while [[ $count -ge $count_tot+1 ]] || [[ $count -le $count_tot-1 ]]
 do
-   if [[ $count -le 9 ]]
+   if [[ $count -le $count_tot-1  ]]
    then
     echo "You guessed too low! guess a bigger number"
     read_count
@@ -22,7 +22,7 @@ done
 echo "Hi ! please guess the number of files  in the current folder :) "
 read_count
 
-if [[ $count -eq 10 ]]
+if [[ $count -eq $count_tot ]]
 then
     echo "congratulations! You guessed it right"
 fi 
